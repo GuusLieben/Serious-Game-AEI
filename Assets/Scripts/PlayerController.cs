@@ -50,10 +50,26 @@ public class PlayerController : MonoBehaviour
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
+        SetText("Beeld uit:\nTrompet speler");
+        SetChair(new Vector2(3, 2));
     }
 
     private void Update()
     {
+        // Development only, changes the active row
+        if (Input.GetKey(KeyCode.Alpha1)) SetChair(new Vector2(_lastSeat.x, 0));
+        if (Input.GetKey(KeyCode.Alpha2)) SetChair(new Vector2(_lastSeat.x, 1));
+        if (Input.GetKey(KeyCode.Alpha3)) SetChair(new Vector2(_lastSeat.x, 2));
+        if (Input.GetKey(KeyCode.Alpha4)) SetChair(new Vector2(_lastSeat.x, 3));
+        if (Input.GetKey(KeyCode.Alpha5)) SetChair(new Vector2(_lastSeat.x, 4));
+        
+        // Development only, changes the active seat
+        if (Input.GetKey(KeyCode.A)) SetChair(new Vector2(0, _lastSeat.y));
+        if (Input.GetKey(KeyCode.B)) SetChair(new Vector2(1, _lastSeat.y));
+        if (Input.GetKey(KeyCode.C)) SetChair(new Vector2(2, _lastSeat.y));
+        if (Input.GetKey(KeyCode.D)) SetChair(new Vector2(3, _lastSeat.y));
+        if (Input.GetKey(KeyCode.E)) SetChair(new Vector2(4, _lastSeat.y));
+        
         if (Input.touchCount <= 0) return;
 
         if (Input.GetTouch(0).phase == TouchPhase.Began)
