@@ -6,6 +6,24 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    private readonly Dictionary<int, Vector2> _rowPositions = new Dictionary<int, Vector2>
+    {
+        {4, new Vector2(4.5f, -5.5f)}, 
+        {3, new Vector2(3.75f, -3f)},
+        {2, new Vector2(3f, -0.5f)},
+        {1, new Vector2(2.5f, 1.5f)},
+        {0, new Vector2(1.75f, 3.5f)},
+    };
+
+    private readonly Dictionary<int, float> _chairPositions = new Dictionary<int, float>
+    {
+        {4, -5.25f},
+        {3, -2.5f},
+        {2, 0},
+        {1, 2.5f},
+        {0, 5.25f}
+    };
+
     private Vector3 _firstPoint;
     private Vector3 _secondPoint;
     private float _xAngle;
@@ -42,5 +60,13 @@ public class PlayerController : MonoBehaviour
             _yAngle = _yAngleTemp + (_secondPoint.y - _firstPoint.y) * 90 / Screen.height;
             this.transform.rotation = Quaternion.Euler(-_yAngle, -_xAngle, 0.0f);
         }
+    }
+
+    public void SetChair(Vector2 position)
+    {
+        var chair = _chairPositions[(int) position.x];
+        var row = _rowPositions[(int) position.y];
+        var seat = new Vector3(chair, row.x, row.y);
+        this.transform.position = seat;
     }
 }
