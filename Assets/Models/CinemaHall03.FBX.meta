@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: a4a29b15043d5c34c9476d2f75007479
+timeCreated: 1575134358
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cinema03FloorLight
+    100002: Cinema03Wall
+    100004: //RootNode
+    100006: CinemaLamp03
+    100008: CinemaSofa01
+    400000: Cinema03FloorLight
+    400002: Cinema03Wall
+    400004: //RootNode
+    400006: CinemaLamp03
+    400008: CinemaSofa01
+    2300000: Cinema03FloorLight
+    2300002: Cinema03Wall
+    2300004: CinemaLamp03
+    2300006: CinemaSofa01
+    3300000: Cinema03FloorLight
+    3300002: Cinema03Wall
+    3300004: CinemaLamp03
+    3300006: CinemaSofa01
+    4300000: Cinema03Wall
+    4300002: Cinema03FloorLight
+    4300004: CinemaSofa01
+    4300006: CinemaLamp03
+    6400000: Cinema03FloorLight
+    6400002: Cinema03Wall
+    6400004: CinemaLamp03
+    6400006: CinemaSofa01
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema03Floor
+    second: {fileID: 2100000, guid: e89a3573dca4538408892916b0fe5062, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema03FloorLight
+    second: {fileID: 2100000, guid: 46291817ca59fff4fb8bd3518ba5837a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema03Soffit
+    second: {fileID: 2100000, guid: 9dfe6473b56783848aff8b5a89db2680, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema03Wall01
+    second: {fileID: 2100000, guid: bd333fe84fbb2094bbbc30c49650a1d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cinema03Wall02
+    second: {fileID: 2100000, guid: 25986b01fde0b184db1e1822d773c05b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CinemaLamp03
+    second: {fileID: 2100000, guid: 460d855e3b923834da1abdfb121bf6f2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CinemaSofa01
+    second: {fileID: 2100000, guid: 881859de526d2f04180d273a99f03c33, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 0
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
