@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
+    // Positions of chairs on the Y and Z axis
     private readonly Dictionary<int, Vector2> _rowPositions = new Dictionary<int, Vector2>
     {
         {4, new Vector2(5f, -5f)}, 
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
         {0, new Vector2(2.25f, 4f)},
     };
 
+    // Positions of chairs on the X axis
     private readonly Dictionary<int, float> _chairPositions = new Dictionary<int, float>
     {
         {4, -5.25f},
@@ -25,14 +27,22 @@ public class PlayerController : MonoBehaviour
         {0, 5.25f}
     };
 
+    // Touch control settings
     private Vector3 _firstPoint;
     private Vector3 _secondPoint;
     private float _xAngle;
     private float _yAngle;
     private float _xAngleTemp;
     private float _yAngleTemp;
-
+    
+    // Primary text display
     private TMP_Text _text;
+    
+    // Reference to last seat in 2D space (0,0 .. 4,4)
+    private Vector2 _lastSeat;
+
+    [SerializeField]
+    private int chairShiftSpeed = 5;
 
     private void Start()
     {
@@ -44,10 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.touchCount <= 0)
-        {            
-            return;
-        }
+        if (Input.touchCount <= 0) return;
 
         if (Input.GetTouch(0).phase == TouchPhase.Began)
         {
@@ -62,7 +69,7 @@ public class PlayerController : MonoBehaviour
             _secondPoint = Input.GetTouch(0).position;
             _xAngle = _xAngleTemp + (_secondPoint.x - _firstPoint.x) * 180 / Screen.width;
             _yAngle = _yAngleTemp + (_secondPoint.y - _firstPoint.y) * 90 / Screen.height;
-            this.transform.rotation = Quaternion.Euler(-_yAngle, -_xAngle, 0.0f);
+            this.transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0.0f);
         }
     }
 
@@ -71,7 +78,13 @@ public class PlayerController : MonoBehaviour
         var chair = _chairPositions[(int) position.x];
         var row = _rowPositions[(int) position.y];
         var seat = new Vector3(chair, row.x, row.y);
-        this.transform.position = seat;
+
+        var delta = _lastSeat.y - position.y;
+        if (delta < 0) delta = -delta;
+        
+        var speed = (chairShiftSpeed - delta) * Time.deltaTime;
+        _lastSeat = position;
+        transform.position = Vector3.Lerp(transform.position, seat, speed);
     }
 
     public void SetText(string text)
