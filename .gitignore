@@ -113,3 +113,4 @@ msbuild.wrn
 
 # IntelliJ/Rider
 .idea
+**/Documentation
