@@ -9,11 +9,11 @@ public class PlayerController : MonoBehaviour
 
     private readonly Dictionary<int, Vector2> _rowPositions = new Dictionary<int, Vector2>
     {
-        {4, new Vector2(4.5f, -5.5f)}, 
-        {3, new Vector2(3.75f, -3f)},
-        {2, new Vector2(3f, -0.5f)},
-        {1, new Vector2(2.5f, 1.5f)},
-        {0, new Vector2(1.75f, 3.5f)},
+        {4, new Vector2(5f, -5f)}, 
+        {3, new Vector2(4.25f, -2.75f)},
+        {2, new Vector2(3.5f, -0.5f)},
+        {1, new Vector2(3f, 1.75f)},
+        {0, new Vector2(2.25f, 4f)},
     };
 
     private readonly Dictionary<int, float> _chairPositions = new Dictionary<int, float>
