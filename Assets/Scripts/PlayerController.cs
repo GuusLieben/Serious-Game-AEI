@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -31,8 +32,11 @@ public class PlayerController : MonoBehaviour
     private float _xAngleTemp;
     private float _yAngleTemp;
 
+    private TMP_Text _text;
+
     private void Start()
     {
+        _text = FindObjectOfType<TMP_Text>();
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
@@ -69,4 +73,10 @@ public class PlayerController : MonoBehaviour
         var seat = new Vector3(chair, row.x, row.y);
         this.transform.position = seat;
     }
+
+    public void SetText(string text)
+    {
+        _text.text = text;
+    }
+    
 }
