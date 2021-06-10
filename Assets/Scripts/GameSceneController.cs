@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -35,7 +36,11 @@ public class GameSceneController : MonoBehaviour
     private float _yAngleTemp;
 
     // Primary text display
-    private TMP_Text _text;
+    private TMP_Text _gameText;
+    private IEnumerable<TMP_Text> _timers;
+    private int _remainingGameTime = -1;
+
+    private float _elapsed = 0;
 
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
@@ -47,11 +52,15 @@ public class GameSceneController : MonoBehaviour
 
     private void Start()
     {
-        _text = FindObjectOfType<TMP_Text>();
+        _timers = GameObject.FindGameObjectsWithTag("TimerText").Select(t => t.GetComponent<TMP_Text>());
+        _gameText = GameObject.FindGameObjectWithTag("PrimarySceneText").GetComponent<TMP_Text>();
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
-        SetChair(new Vector2(3, 2));
+        SetTimers("");
+        
+        // Development only
+        Portray("Soldaat van Oranje", "Garderobe", "Droevig");
     }
 
     private void Update()
@@ -69,6 +78,8 @@ public class GameSceneController : MonoBehaviour
         if (Input.GetKey(KeyCode.C)) SetChair(new Vector2(2, _lastSeat.y));
         if (Input.GetKey(KeyCode.D)) SetChair(new Vector2(3, _lastSeat.y));
         if (Input.GetKey(KeyCode.E)) SetChair(new Vector2(4, _lastSeat.y));
+        
+        UpdateTimer();
         
         if (Input.touchCount <= 0) return;
 
@@ -89,6 +100,41 @@ public class GameSceneController : MonoBehaviour
         }
     }
 
+    private void UpdateTimer()
+    {
+        _elapsed += Time.deltaTime;
+        if (_elapsed < 1) return;
+
+        _remainingGameTime -= (int) _elapsed;
+        _elapsed = 0;
+        
+        if (_remainingGameTime < 0)
+        {
+            SetTimers("");
+            return;
+        }
+
+        if (_remainingGameTime == 0)
+        {
+            SetText("Round ended");
+        }
+        SetTimers(_remainingGameTime + "");
+    }
+
+    private void SetTimers(string text)
+    {
+        foreach (var timer in _timers) timer.text = text;
+    }
+    
+    
+    private void SetText(string text)
+    {
+        _gameText.text = text;
+    }
+    
+    // ========================
+    // public API
+    // ========================
     public void SetChair(Vector2 position)
     {
         var chair = _chairPositions[(int) position.x];
@@ -103,9 +149,11 @@ public class GameSceneController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, seat, speed);
     }
 
-    public void Portray(string goal)
+    public void Portray(string piece, string relation, string emotion)
     {
-        SetText(portrayText + ":\n" + goal);
+        SetText(portrayText + ":\n" + piece + ",\n" + relation + ",\n" + emotion);
+        _remainingGameTime = 30;
+        SetTimers("30");
     }
 
     public void NextPerson(string person)
@@ -116,10 +164,5 @@ public class GameSceneController : MonoBehaviour
     public void TeamWon(string team)
     {
         SetText(string.Format(teamWon, team));
-    }
-
-    private void SetText(string text)
-    {
-        _text.text = text;
     }
 }
