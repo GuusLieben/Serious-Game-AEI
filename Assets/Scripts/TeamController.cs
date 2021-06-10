@@ -1,56 +1,59 @@
+using System;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Assets.Scripts.Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class TeamController : MonoBehaviour
 {
-    [SerializeField]
-    private List<PlayerController> players;
+    private List<string> _playerNames;
 
-    private List<string> playerNames = new List<string>();
+    private string _groupCode;
 
-    [SerializeField] 
-    private TMP_Text textGroupCode;
+    [SerializeField] private List<PlayerController> players;
 
-    [SerializeField] 
-    private TMP_Text teamName;
+    [SerializeField] private TMP_Text _textGroupCode;
 
-    private string groupCode;
+    [SerializeField] private TMP_Text _teamName;
+
+    [SerializeField] private string _groupTitle = "Groepscode: {0}";
+
+    
 
     void Start()
     {
+        _playerNames = new List<string>();
         StartCoroutine(GenerateCode());
     }
 
     public List<string> GetPlayers()
     {
+        _playerNames.Clear();
         foreach (PlayerController player in players)
         {
-            playerNames.Add(player.GetPlayerName());
+            _playerNames.Add(player.GetPlayerName());
         }
 
-        return playerNames;
+        return _playerNames;
     }
 
     public string GetTeamName()
     {
-        return teamName.text;
+        return _teamName.text;
     }
 
-    private void SetText(string groupCode)
+    private void SetText()
     {
-        this.textGroupCode.text = "Groepscode: " + groupCode;
+
+        _textGroupCode.text = string.Format(_groupTitle, _groupCode);
     }
 
     private IEnumerator GenerateCode()
     {
         using (UnityWebRequest createTeamRequest =
-            UnityWebRequest.Post("https://avans-schalm-appserver.azurewebsites.net/api/game/", this.teamName.text))
+            UnityWebRequest.Post("https://avans-schalm-appserver.azurewebsites.net/api/game/", _teamName.text))
         {
             yield return createTeamRequest.SendWebRequest();
 
@@ -62,17 +65,18 @@ public class TeamController : MonoBehaviour
             {
                 Debug.Log("Team Added!");
 
-                this.groupCode = JsonUtility.FromJson<TeamGroupCode>(createTeamRequest.downloadHandler.text).gameCode.ToUpper();
-                    
-                PlayerPrefs.SetString("GAME_CODE", this.groupCode);
+                _groupCode = JsonConvert
+                    .DeserializeAnonymousType(createTeamRequest.downloadHandler.text, new {gameCode = ""}).gameCode;
 
-                SetText(this.groupCode);
+                PlayerPrefs.SetString("GAME_CODE", _groupCode);
+
+                SetText();
             }
         }
     }
 
     public string GetGroupCode()
     {
-        return this.groupCode;
+        return _groupCode;
     }
 }
