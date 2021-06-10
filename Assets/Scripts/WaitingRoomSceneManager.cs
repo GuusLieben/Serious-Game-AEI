@@ -4,42 +4,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
-using Models;
 using Newtonsoft.Json;
 using UnityEngine.UI;
 
 public class WaitingRoomSceneManager : MonoBehaviour
 {
-    private static string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/teams/count?gameCode=";
+    private string _gameCode;
+    private bool _isReady;
     
-    private string gameCode;
-    [SerializeField]
-    private Text title;
-    private bool isReady;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/teams/count?gameCode={0}";
+    [SerializeField] private Text title;
+
+    private void Start()
     {
-        isReady = false;
+        _isReady = false;
+        // Development only, will later be populated by other scene(s)
         PlayerPrefs.SetString("GAME_CODE", "TswNEv");
-        gameCode = PlayerPrefs.GetString("GAME_CODE");
-        Invoke("StartPolling", 5);
-        title.text = gameCode;
+        _gameCode = PlayerPrefs.GetString("GAME_CODE");
+        Invoke(nameof(StartPolling), 5);
+        title.text = _gameCode;
 
     }
 
-    async void StartPolling()
+    private async void StartPolling()
     {
-        while (!isReady)
+        while (!_isReady)
         {
             await Task.Delay(3000);
-
             StartCoroutine(MakeRequest());
         }
     }
 
-    IEnumerator MakeRequest()
+    private IEnumerator MakeRequest()
     {
-        using UnityWebRequest getTeamsRequest = UnityWebRequest.Get(url + gameCode);
+        using UnityWebRequest getTeamsRequest = UnityWebRequest.Get(string.Format(url, _gameCode));
         yield return getTeamsRequest.SendWebRequest();
         if (getTeamsRequest.result != UnityWebRequest.Result.Success)
         {
@@ -47,11 +45,11 @@ public class WaitingRoomSceneManager : MonoBehaviour
         }
         else
         {
-            string text = getTeamsRequest.downloadHandler.text;
-            int count = JsonConvert.DeserializeAnonymousType(text, new {count = 0}).count;
-            if (!isReady && count == 2)
+            var text = getTeamsRequest.downloadHandler.text;
+            var count = JsonConvert.DeserializeAnonymousType(text, new {count = 0}).count;
+            if (!_isReady && count == 2)
             {
-                isReady = true;
+                _isReady = true;
                 // Go to new scene to start the game
                 //SceneManager.LoadScene("name");
             }
