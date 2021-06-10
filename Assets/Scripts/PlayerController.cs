@@ -18,8 +18,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void SaveUserName()
+    public void SaveUserName()
     {
         playerName = inputField.text;
+    }
+
+    public string GetPlayerName()
+    {
+        return playerName;
     }
 }

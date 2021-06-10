@@ -24,7 +24,7 @@ public class NewTeamController : MonoBehaviour
             playerNames = players
         };
 
-        string teamString = 
+        string teamString = team.ToString();
 
         using (UnityWebRequest addTeamRequest =
             UnityWebRequest.Post("https://avans-schalm-appserver.azurewebsites.net/api/game/join?gameCode=" + this.teamController.GetGroupCode(), teamString))
