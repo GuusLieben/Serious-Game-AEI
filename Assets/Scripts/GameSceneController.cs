@@ -1,15 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GameCameraController : MonoBehaviour
+public class GameSceneController : MonoBehaviour
 {
-    
     // Positions of chairs on the Y and Z axis
     private readonly Dictionary<int, Vector2> _rowPositions = new Dictionary<int, Vector2>
     {
-        {4, new Vector2(5f, -5f)}, 
+        {4, new Vector2(5f, -5f)},
         {3, new Vector2(4.25f, -2.75f)},
         {2, new Vector2(3.5f, -0.5f)},
         {1, new Vector2(3f, 1.75f)},
@@ -33,15 +33,17 @@ public class GameCameraController : MonoBehaviour
     private float _yAngle;
     private float _xAngleTemp;
     private float _yAngleTemp;
-    
+
     // Primary text display
     private TMP_Text _text;
-    
+
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
 
-    [SerializeField]
-    private int chairShiftSpeed = 5;
+    [SerializeField] private int chairShiftSpeed = 5;
+    [SerializeField] private string portrayText = "Beeld uit";
+    [SerializeField] private string nextPerson = "Give the phone to";
+    [SerializeField] private string teamWon = "Team {0} won!";
 
     private void Start()
     {
@@ -49,7 +51,6 @@ public class GameCameraController : MonoBehaviour
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
-        SetText("Beeld uit:\nTrompet speler");
         SetChair(new Vector2(3, 2));
     }
 
@@ -61,7 +62,7 @@ public class GameCameraController : MonoBehaviour
         if (Input.GetKey(KeyCode.Alpha3)) SetChair(new Vector2(_lastSeat.x, 2));
         if (Input.GetKey(KeyCode.Alpha4)) SetChair(new Vector2(_lastSeat.x, 3));
         if (Input.GetKey(KeyCode.Alpha5)) SetChair(new Vector2(_lastSeat.x, 4));
-        
+
         // Development only, changes the active seat
         if (Input.GetKey(KeyCode.A)) SetChair(new Vector2(0, _lastSeat.y));
         if (Input.GetKey(KeyCode.B)) SetChair(new Vector2(1, _lastSeat.y));
@@ -96,13 +97,28 @@ public class GameCameraController : MonoBehaviour
 
         var delta = _lastSeat.y - position.y;
         if (delta < 0) delta = -delta;
-        
+
         var speed = (chairShiftSpeed - delta) * Time.deltaTime;
         _lastSeat = position;
         transform.position = Vector3.Lerp(transform.position, seat, speed);
     }
 
-    public void SetText(string text)
+    public void Portray(string goal)
+    {
+        SetText(portrayText + ":\n" + goal);
+    }
+
+    public void NextPerson(string person)
+    {
+        SetText(nextPerson + ":\n" + person);
+    }
+
+    public void TeamWon(string team)
+    {
+        SetText(string.Format(teamWon, team));
+    }
+
+    private void SetText(string text)
     {
         _text.text = text;
     }
