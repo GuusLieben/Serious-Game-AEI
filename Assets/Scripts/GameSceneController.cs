@@ -89,8 +89,8 @@ public class GameSceneController : MonoBehaviour
 
     public void SetChair(Vector2 position)
     {
-        var chair = _chairPositions[(int)position.x];
-        var row = _rowPositions[(int)position.y];
+        var chair = _chairPositions[(int) position.x];
+        var row = _rowPositions[(int) position.y];
         var seat = new Vector3(chair, row.x, row.y);
 
         var delta = _lastSeat.y - position.y;
