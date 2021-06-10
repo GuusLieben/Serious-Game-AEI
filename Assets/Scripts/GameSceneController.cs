@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -69,7 +67,7 @@ public class GameSceneController : MonoBehaviour
         if (Input.GetKey(KeyCode.C)) SetChair(new Vector2(2, _lastSeat.y));
         if (Input.GetKey(KeyCode.D)) SetChair(new Vector2(3, _lastSeat.y));
         if (Input.GetKey(KeyCode.E)) SetChair(new Vector2(4, _lastSeat.y));
-        
+
         if (Input.touchCount <= 0) return;
 
         if (Input.GetTouch(0).phase == TouchPhase.Began)
@@ -91,8 +89,8 @@ public class GameSceneController : MonoBehaviour
 
     public void SetChair(Vector2 position)
     {
-        var chair = _chairPositions[(int) position.x];
-        var row = _rowPositions[(int) position.y];
+        var chair = _chairPositions[(int)position.x];
+        var row = _rowPositions[(int)position.y];
         var seat = new Vector3(chair, row.x, row.y);
 
         var delta = _lastSeat.y - position.y;
