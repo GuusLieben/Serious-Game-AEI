@@ -6,13 +6,15 @@ using UnityEngine;
 using UnityEngine.Networking;
 using Models;
 using Newtonsoft.Json;
+using UnityEngine.UI;
 
 public class WaitingRoomSceneManager : MonoBehaviour
 {
     private static string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/teams/count?gameCode=";
     
     private string gameCode;
-
+    [SerializeField]
+    private Text title;
     private bool isReady;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +23,8 @@ public class WaitingRoomSceneManager : MonoBehaviour
         PlayerPrefs.SetString("GAME_CODE", "TswNEv");
         gameCode = PlayerPrefs.GetString("GAME_CODE");
         Invoke("StartPolling", 5);
-        
+        title.text = gameCode;
+
     }
 
     async void StartPolling()
