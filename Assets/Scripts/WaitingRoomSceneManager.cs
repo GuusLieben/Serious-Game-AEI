@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Models;
+using Newtonsoft.Json;
 
 public class WaitingRoomSceneManager : MonoBehaviour
 {
@@ -27,7 +28,7 @@ public class WaitingRoomSceneManager : MonoBehaviour
     {
         while (!isReady)
         {
-            await Task.Delay(2000);
+            await Task.Delay(3000);
 
             StartCoroutine(MakeRequest());
         }
@@ -44,15 +45,12 @@ public class WaitingRoomSceneManager : MonoBehaviour
         else
         {
             string text = getTeamsRequest.downloadHandler.text;
-            Debug.LogWarning(text.ToString());
-            int count = JsonUtility.FromJson<GetTeamCountResponse>(text).count;
-            
-            Debug.LogWarning("Length of data: " + count);
+            int count = JsonConvert.DeserializeAnonymousType(text, new {count = 0}).count;
             if (!isReady && count == 2)
             {
-                Debug.LogWarning("Two teams ready");
                 isReady = true;
                 // Go to new scene to start the game
+                //SceneManager.LoadScene("name");
             }
         }
     }
