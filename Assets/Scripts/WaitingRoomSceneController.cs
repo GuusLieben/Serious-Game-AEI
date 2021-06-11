@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Networking;
 using Newtonsoft.Json;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class WaitingRoomSceneManager : MonoBehaviour
+public class WaitingRoomSceneController : MonoBehaviour
 {
     private string _gameCode;
     private bool _isReady;
@@ -19,11 +18,11 @@ public class WaitingRoomSceneManager : MonoBehaviour
     {
         _isReady = false;
         // Development only, will later be populated by other scene(s)
-        PlayerPrefs.SetString("GAME_CODE", "TswNEv");
+        PlayerPrefs.SetString("GAME_CODE", "TFUrCM");
         _gameCode = PlayerPrefs.GetString("GAME_CODE");
         Invoke(nameof(StartPolling), 5);
         title.text = _gameCode;
-
+        Debug.LogWarning("WaitingRoom started");
     }
 
     private async void StartPolling()
@@ -45,13 +44,15 @@ public class WaitingRoomSceneManager : MonoBehaviour
         }
         else
         {
+            Debug.LogWarning("Entered request response");
             var text = getTeamsRequest.downloadHandler.text;
             var count = JsonConvert.DeserializeAnonymousType(text, new {count = 0}).count;
             if (!_isReady && count == 2)
             {
                 _isReady = true;
                 // Go to new scene to start the game
-                //SceneManager.LoadScene("name");
+                Debug.LogWarning("Go to instructions");
+                SceneManager.LoadScene("InstructionsScene");
             }
         }
     }
