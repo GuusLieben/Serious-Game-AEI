@@ -62,6 +62,8 @@ public class GameSceneController : MonoBehaviour
 
     private void Start()
     {
+        _lastSeat = new Vector2(4, 2);
+        SetText("Waiting for server");
         _timers = GameObject.FindGameObjectsWithTag("TimerText").Select(t => t.GetComponent<TMP_Text>());
         _gameText = GameObject.FindGameObjectWithTag("PrimarySceneText").GetComponent<TMP_Text>();
         _gameCode = PlayerPrefs.GetString("GAME_CODE");
