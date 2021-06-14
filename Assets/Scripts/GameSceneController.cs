@@ -53,7 +53,7 @@ public class GameSceneController : MonoBehaviour
     private Vector2 _lastSeat;
 
     [SerializeField] private int chairShiftSpeed = 5;
-    [SerializeField] private string portrayText = "Beeld uit:\n{0},\n{1},\n{2}";
+    private string portrayText = "Beeld uit:\n{0},\n{1},\n{2}";
     [SerializeField] private string nextPerson = "Geef de telefoon aan:\n{0}";
     [SerializeField] private string teamWon = "{0} heeft gewonnen!";
     [SerializeField] private string waitingFor = "{0} is aan zet!";
