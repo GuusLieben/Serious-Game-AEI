@@ -60,16 +60,18 @@ public class GameSceneController : MonoBehaviour
     [SerializeField] private int secondsPerRound = 30;
     [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}";
 
-    private void Start()
+    void Start()
     {
         _lastSeat = new Vector2(4, 2);
-        SetText("Waiting for server");
+
         _timers = GameObject.FindGameObjectsWithTag("TimerText").Select(t => t.GetComponent<TMP_Text>());
         _gameText = GameObject.FindGameObjectWithTag("PrimarySceneText").GetComponent<TMP_Text>();
         _gameCode = PlayerPrefs.GetString("GAME_CODE");
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
+
+        SetText("Waiting for server");
         SetTimers("");
 
         StartPolling();
