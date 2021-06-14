@@ -861,7 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamController: {fileID: 1390125277}
   url: https://avans-schalm-appserver.azurewebsites.net/api/game/join?gameCode={0}
-  newScene: 
+  newScene: WaitingRoomScene
 --- !u!114 &976408178
 MonoBehaviour:
   m_ObjectHideFlags: 0
