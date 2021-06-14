@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -414,13 +414,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1688575747}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JudgingSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 1853132959266291308, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
@@ -1647,13 +1672,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1688575747}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JudgingSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 1853132959266291308, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
@@ -1927,13 +1977,38 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1688575747}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JudgingSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 1853132959266291310, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
@@ -1941,5 +2016,5 @@ PrefabInstance:
       value: AnswerAText
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7036225742784485394, guid: 0618bdaf54144274698139eb3c4670f1, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0618bdaf54144274698139eb3c4670f1, type: 3}
