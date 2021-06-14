@@ -240,6 +240,27 @@ PrefabInstance:
       propertyPath: m_Name
       value: Instruction Text
       objectReference: {fileID: 0}
+    - target: {fileID: 134438748316500233, guid: adf34a5e263b61b4fa604c3a11501972,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77c83c6064840e4f801e50b65f78a1d,
+        type: 3}
+    - target: {fileID: 134438748316500233, guid: adf34a5e263b61b4fa604c3a11501972,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 134438748316500233, guid: adf34a5e263b61b4fa604c3a11501972,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 134438748316500233, guid: adf34a5e263b61b4fa604c3a11501972,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adf34a5e263b61b4fa604c3a11501972, type: 3}
 --- !u!224 &185345399 stripped
@@ -571,6 +592,12 @@ PrefabInstance:
       propertyPath: m_Text
       value: Ga terug
       objectReference: {fileID: 0}
+    - target: {fileID: 995046891694883801, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: a77c83c6064840e4f801e50b65f78a1d,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec1f2733eec01a4439053db6a0fa5909, type: 3}
 --- !u!224 &1163416835 stripped
