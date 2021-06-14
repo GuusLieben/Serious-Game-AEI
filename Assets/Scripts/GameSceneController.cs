@@ -227,8 +227,11 @@ public class GameSceneController : MonoBehaviour
         
         if (WaitingForTeam(status)) WaitForTeam(status.currentTeamName);
         
-        var words = status.currentWords;
-        Portray(words[0], words[1], words[2]);
+        if (_gameStatus.currentTeamId.ToString().Equals(PlayerPrefs.GetString("TEAM_ID")))
+        {
+            var words = status.currentWords;
+            Portray(words[0], words[1], words[2]);            
+        }
 
         CheckPositionChanged(status);
     }
