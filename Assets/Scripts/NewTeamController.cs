@@ -10,7 +10,7 @@ public class NewTeamController : MonoBehaviour
     
     [SerializeField] private TeamController teamController;
     [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/join?gameCode={0}";
-    [SerializeField] private string _newScene;
+    [SerializeField] private string newScene;
 
     public void StartGame()
     {
@@ -19,7 +19,7 @@ public class NewTeamController : MonoBehaviour
 
     public void LoadNewScene()
     {
-        SceneManager.LoadScene(_newScene);
+        SceneManager.LoadScene(newScene);
     }
 
     private IEnumerator PostTeam()
@@ -35,7 +35,7 @@ public class NewTeamController : MonoBehaviour
 
         var teamString = JsonConvert.SerializeObject(team);
 
-        using var addTeamRequest = UnityWebRequest.Post(string.Format(url, PlayerPrefs.GetString("GAME_CODE")), "POST");
+        using var addTeamRequest = UnityWebRequest.Post(string.Format(url, PlayerPrefs.GetString("GAME_CODE")), "");
         
         addTeamRequest.SetRequestHeader("Content-Type", "application/json");
         
