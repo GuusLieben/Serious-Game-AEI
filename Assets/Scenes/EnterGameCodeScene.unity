@@ -130,6 +130,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 561021127}
     m_Modifications:
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 551533408}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnSearchGameClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JoinGameController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 995046890621991114, guid: ec1f2733eec01a4439053db6a0fa5909,
         type: 3}
       propertyPath: m_Pivot.x
@@ -381,6 +396,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopBar
       objectReference: {fileID: 0}
+    - target: {fileID: 538537504236271071, guid: 182c17ddb51714a499ed68aaef435156,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182c17ddb51714a499ed68aaef435156, type: 3}
 --- !u!224 &187896413 stripped
@@ -497,7 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7dfd2649aa8bd84eb194f6204caf03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameCodeInputField: {fileID: 0}
+  gameCodeInputField: {fileID: 1253196690}
   url: https://avans-schalm-appserver.azurewebsites.net/api/game/joinable?gameCode={0}
 --- !u!4 &551533409
 Transform:

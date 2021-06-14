@@ -46,4 +46,9 @@ public class NewTeamController : MonoBehaviour
         yield return addTeamRequest.SendWebRequest();
         Debug.Log(addTeamRequest.result != UnityWebRequest.Result.Success ? addTeamRequest.error : "Team Added!");
     }
+
+    public void GoToStartUp()
+    {
+        SceneManager.LoadScene("Scenes/StartMenuScene");
+    }
 }
