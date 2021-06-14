@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -33,23 +34,33 @@ public class GameSceneController : MonoBehaviour
     private float _yAngleTemp;
 
     // Primary text display
-    private TMP_Text _text;
+    private TMP_Text _gameText;
+    private IEnumerable<TMP_Text> _timers;
+    private int _remainingGameTime = -1;
+
+    private float _elapsed;
 
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
 
     [SerializeField] private int chairShiftSpeed = 5;
-    [SerializeField] private string portrayText = "Beeld uit";
-    [SerializeField] private string nextPerson = "Give the phone to";
-    [SerializeField] private string teamWon = "Team {0} won!";
+    [SerializeField] private string portrayText = "Beeld uit:\n{0},\n{1},\n{2}";
+    [SerializeField] private string nextPerson = "Geef de telefoon aan:\n{0}";
+    [SerializeField] private string teamWon = "{0} heeft gewonnen!";
+    [SerializeField] private string waitingFor = "{0} is aan zet!";
+    [SerializeField] private int secondsPerRound = 30;
 
     private void Start()
     {
-        _text = FindObjectOfType<TMP_Text>();
+        _timers = GameObject.FindGameObjectsWithTag("TimerText").Select(t => t.GetComponent<TMP_Text>());
+        _gameText = GameObject.FindGameObjectWithTag("PrimarySceneText").GetComponent<TMP_Text>();
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
-        SetChair(new Vector2(3, 2));
+        SetTimers("");
+        
+        // Development only
+        Portray("Soldaat van Oranje", "Garderobe", "Droevig");
     }
 
     private void Update()
@@ -68,6 +79,8 @@ public class GameSceneController : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) SetChair(new Vector2(3, _lastSeat.y));
         if (Input.GetKey(KeyCode.E)) SetChair(new Vector2(4, _lastSeat.y));
 
+        UpdateTimer();
+        
         if (Input.touchCount <= 0) return;
 
         if (Input.GetTouch(0).phase == TouchPhase.Began)
@@ -87,6 +100,41 @@ public class GameSceneController : MonoBehaviour
         }
     }
 
+    private void UpdateTimer()
+    {
+        _elapsed += Time.deltaTime;
+        if (_elapsed < 1) return;
+
+        _remainingGameTime -= (int) _elapsed;
+        _elapsed = 0;
+        
+        if (_remainingGameTime < 0)
+        {
+            SetTimers("");
+            return;
+        }
+
+        if (_remainingGameTime == 0)
+        {
+            SetText("Round ended");
+        }
+        SetTimers(_remainingGameTime + "");
+    }
+
+    private void SetTimers(string text)
+    {
+        foreach (var timer in _timers) timer.text = text;
+    }
+    
+    
+    private void SetText(string text)
+    {
+        _gameText.text = text;
+    }
+    
+    // ========================
+    // public API
+    // ========================
     public void SetChair(Vector2 position)
     {
         var chair = _chairPositions[(int) position.x];
@@ -101,14 +149,15 @@ public class GameSceneController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, seat, speed);
     }
 
-    public void Portray(string goal)
+    public void Portray(string piece, string relation, string emotion)
     {
-        SetText(portrayText + ":\n" + goal);
+        SetText(string.Format(portrayText, piece, relation, emotion));
+        StartTimer();
     }
 
     public void NextPerson(string person)
     {
-        SetText(nextPerson + ":\n" + person);
+        SetText(string.Format(nextPerson, person));
     }
 
     public void TeamWon(string team)
@@ -116,8 +165,15 @@ public class GameSceneController : MonoBehaviour
         SetText(string.Format(teamWon, team));
     }
 
-    private void SetText(string text)
+    public void WaitForTeam(string team)
     {
-        _text.text = text;
+        SetText(string.Format(waitingFor, team));
+        StartTimer();
+    }
+
+    private void StartTimer()
+    {
+        _remainingGameTime = secondsPerRound;
+        SetTimers(secondsPerRound + "");
     }
 }
