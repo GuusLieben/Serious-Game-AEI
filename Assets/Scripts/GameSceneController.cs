@@ -46,7 +46,7 @@ public class GameSceneController : MonoBehaviour
     private Vector2 _lastSeat;
 
     [SerializeField] private int chairShiftSpeed = 5;
-    [SerializeField] private string portrayText = "Beeld uit";
+    [SerializeField] private string portrayText = "Beeld uit:\n{0},\n{1},\n{2}";
     [SerializeField] private string nextPerson = "Geef de telefoon aan:\n{0}";
     [SerializeField] private string teamWon = "{0} heeft gewonnen!";
     [SerializeField] private string waitingFor = "{0} is aan zet!";
@@ -152,7 +152,7 @@ public class GameSceneController : MonoBehaviour
 
     public void Portray(string piece, string relation, string emotion)
     {
-        SetText(portrayText + ":\n" + piece + ",\n" + relation + ",\n" + emotion);
+        SetText(string.Format(portrayText, piece, relation, emotion));
         StartTimer();
     }
 
