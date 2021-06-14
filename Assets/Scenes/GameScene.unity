@@ -2270,9 +2270,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chairShiftSpeed: 3
-  nextPerson: Give the phone to
-  teamWon: Team {0} won!
-  waitingFor: '{0} is aan zet!'
   secondsPerRound: 30
   url: https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}
 --- !u!54 &1761575038
