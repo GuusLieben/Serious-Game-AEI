@@ -51,7 +51,7 @@ public class TeamController : MonoBehaviour
         }
         else
         {
-            Debug.Log("Team Added!");
+            Debug.Log("Created a new game!");
 
             _groupCode = JsonConvert.DeserializeAnonymousType(createTeamRequest.downloadHandler.text, new {gameCode = ""})?.gameCode;
 
