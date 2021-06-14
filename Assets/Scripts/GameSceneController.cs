@@ -49,6 +49,7 @@ public class GameSceneController : MonoBehaviour
     private bool _gameActive = true;
     private string _gameCode;
     private GameStatus _gameStatus;
+    private bool _indicatingPlayer;
 
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
@@ -167,6 +168,7 @@ public class GameSceneController : MonoBehaviour
 
     private void SetNextPerson(string person)
     {
+        _indicatingPlayer = true;
         SetText(string.Format(NextPerson, person));
     }
 
@@ -211,7 +213,7 @@ public class GameSceneController : MonoBehaviour
             var gameStatus = JsonConvert.DeserializeObject<GameStatus>(text);
             if (gameStatus != null)
             {
-                if (_gameStatus == null || !gameStatus.statusId.Equals(_gameStatus.statusId))
+                if (_gameStatus == null || _indicatingPlayer || !gameStatus.statusId.Equals(_gameStatus.statusId))
                 {
                     UpdateState(gameStatus);
                 }
@@ -224,6 +226,8 @@ public class GameSceneController : MonoBehaviour
 
     private void UpdateState(GameStatus status)
     {
+        _indicatingPlayer = false;
+        
         if (TeamWinnerAnnounced(status)) SetTeamWon(status.winningTeam.TeamName);
         
         if (MimePlayerChanged(status)) SetNextPerson(status.mimePlayer);
