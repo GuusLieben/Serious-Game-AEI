@@ -203,7 +203,7 @@ public class GameSceneController : MonoBehaviour
             var gameStatus = JsonConvert.DeserializeObject<GameStatus>(text);
             if (gameStatus != null)
             {
-                if (_gameStatus != null && !gameStatus.statusId.Equals(_gameStatus.statusId))
+                if (_gameStatus == null || !gameStatus.statusId.Equals(_gameStatus.statusId))
                 {
                     UpdateState(gameStatus);
                 }
@@ -248,7 +248,7 @@ public class GameSceneController : MonoBehaviour
     
     private bool MimePlayerChanged(GameStatus status)
     {
-        return !status.mimePlayer.Equals(_gameStatus.mimePlayer);
+        return _gameStatus == null || !status.mimePlayer.Equals(_gameStatus.mimePlayer);
     }
 
     private static bool WaitingForTeam(GameStatus status)
