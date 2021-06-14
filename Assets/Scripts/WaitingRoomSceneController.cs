@@ -22,7 +22,7 @@ public class WaitingRoomSceneController : MonoBehaviour
         _gameCode = PlayerPrefs.GetString("GAME_CODE");
         Invoke(nameof(StartPolling), 5);
         title.text = _gameCode;
-        Debug.LogWarning("WaitingRoom started");
+        Debug.Log("WaitingRoom started");
     }
 
     private async void StartPolling()
