@@ -42,14 +42,12 @@ public class WaitingRoomSceneController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Entered request response");
             var text = getTeamsRequest.downloadHandler.text;
             var count = JsonConvert.DeserializeAnonymousType(text, new {count = 0}).count;
             if (!_isReady && count == 2)
             {
                 _isReady = true;
                 // Go to new scene to start the game
-                Debug.LogWarning("Go to instructions");
                 SceneManager.LoadScene("InstructionsScene");
             }
         }
