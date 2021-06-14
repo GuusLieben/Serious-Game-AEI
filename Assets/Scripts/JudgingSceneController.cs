@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -12,17 +13,17 @@ public class JudgingSceneController : MonoBehaviour
 
     private readonly List<string> _clicked = new List<string>();
     [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/score?gameCode={0}";
-
+    
     [SerializeField] private TMP_Text buttonA;
     [SerializeField] private TMP_Text buttonB;
     [SerializeField] private TMP_Text buttonC;
-
+    
     private void Start()
     {
-        SetValues(new []{
-            "Test", "Kaas", "Kees"
-        });
-}
+        buttonA.text = PlayerPrefs.GetString("PieceWord");
+        buttonB.text = PlayerPrefs.GetString("RelationWord");
+        buttonC.text = PlayerPrefs.GetString("EmotionWord");
+    }
 
     public void OnClicked(Button button)
     {
@@ -38,13 +39,6 @@ public class JudgingSceneController : MonoBehaviour
         }
 
         print(button.name);
-    }
-
-    public void SetValues(string[] words)
-    {
-        buttonA.text = words[0];
-        buttonB.text = words[1];
-        buttonC.text = words[2];
     }
 
     public void OnSubmit()
