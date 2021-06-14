@@ -47,8 +47,9 @@ public class GameSceneController : MonoBehaviour
 
     [SerializeField] private int chairShiftSpeed = 5;
     [SerializeField] private string portrayText = "Beeld uit";
-    [SerializeField] private string nextPerson = "Give the phone to";
-    [SerializeField] private string teamWon = "Team {0} won!";
+    [SerializeField] private string nextPerson = "Geef de telefoon aan:\n{0}";
+    [SerializeField] private string teamWon = "{0} heeft gewonnen!";
+    [SerializeField] private string waitingFor = "{0} is aan zet!";
 
     private void Start()
     {
@@ -152,17 +153,28 @@ public class GameSceneController : MonoBehaviour
     public void Portray(string piece, string relation, string emotion)
     {
         SetText(portrayText + ":\n" + piece + ",\n" + relation + ",\n" + emotion);
-        _remainingGameTime = 30;
-        SetTimers("30");
+        StartTimer();
     }
 
     public void NextPerson(string person)
     {
-        SetText(nextPerson + ":\n" + person);
+        SetText(string.Format(nextPerson, person));
     }
 
     public void TeamWon(string team)
     {
         SetText(string.Format(teamWon, team));
+    }
+
+    public void WaitForTeam(string team)
+    {
+        SetText(string.Format(waitingFor, team));
+        StartTimer();
+    }
+
+    private void StartTimer()
+    {
+        _remainingGameTime = 30;
+        SetTimers("30");
     }
 }
