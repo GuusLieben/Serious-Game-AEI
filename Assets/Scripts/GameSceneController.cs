@@ -1,7 +1,13 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Models;
+using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour
 {
@@ -39,6 +45,9 @@ public class GameSceneController : MonoBehaviour
     private int _remainingGameTime = -1;
 
     private float _elapsed;
+    private bool _gameActive = true;
+    private string _gameCode;
+    private GameStatus _gameStatus;
 
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
@@ -49,11 +58,13 @@ public class GameSceneController : MonoBehaviour
     [SerializeField] private string teamWon = "{0} heeft gewonnen!";
     [SerializeField] private string waitingFor = "{0} is aan zet!";
     [SerializeField] private int secondsPerRound = 30;
+    [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}";
 
     private void Start()
     {
         _timers = GameObject.FindGameObjectsWithTag("TimerText").Select(t => t.GetComponent<TMP_Text>());
         _gameText = GameObject.FindGameObjectWithTag("PrimarySceneText").GetComponent<TMP_Text>();
+        _gameCode = PlayerPrefs.GetString("GAME_CODE");
         _xAngle = 0;
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
@@ -152,6 +163,9 @@ public class GameSceneController : MonoBehaviour
     public void Portray(string piece, string relation, string emotion)
     {
         SetText(string.Format(portrayText, piece, relation, emotion));
+        PlayerPrefs.SetString("PieceWord", piece);
+        PlayerPrefs.SetString("RelationWord", relation);
+        PlayerPrefs.SetString("EmotionWord", emotion);
         StartTimer();
     }
 
@@ -163,6 +177,7 @@ public class GameSceneController : MonoBehaviour
     public void TeamWon(string team)
     {
         SetText(string.Format(teamWon, team));
+        _gameActive = false;
     }
 
     public void WaitForTeam(string team)
@@ -175,5 +190,39 @@ public class GameSceneController : MonoBehaviour
     {
         _remainingGameTime = secondsPerRound;
         SetTimers(secondsPerRound + "");
+    }
+
+    private async void StartPolling()
+    {
+        while (_gameActive)
+        {
+            await Task.Delay(2000);
+            StartCoroutine(MakeRequest());
+        }
+    }
+
+    private IEnumerator MakeRequest()
+    {
+        using var getTeamsRequest = UnityWebRequest.Get(string.Format(url, _gameCode));
+        yield return getTeamsRequest.SendWebRequest();
+        if (getTeamsRequest.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("Couldn't fetch teams: " + getTeamsRequest.error);
+        }
+        else
+        {
+            var text = getTeamsRequest.downloadHandler.text;
+            var gameStatus = JsonConvert.DeserializeObject<GameStatus>(text);
+            if (gameStatus != null)
+            {
+                if (!gameStatus.Equals(_gameStatus)) UpdateState(gameStatus);
+            }
+            else Debug.LogError("GameStatus was null");
+        }
+    }
+
+    private void UpdateState(GameStatus status)
+    {
+        
     }
 }
