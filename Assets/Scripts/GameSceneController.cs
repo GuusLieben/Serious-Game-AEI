@@ -60,7 +60,9 @@ public class GameSceneController : MonoBehaviour
 
     [SerializeField] private int chairShiftSpeed = 5;
     [SerializeField] private int secondsPerRound = 30;
-    [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}";
+
+    [SerializeField]
+    private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}";
 
     private void Start()
     {
@@ -83,7 +85,7 @@ public class GameSceneController : MonoBehaviour
     {
         SetChair(_lastSeat);
         UpdateTimer();
-        
+
         if (Input.touchCount <= 0) return;
 
         if (Input.GetTouch(0).phase == TouchPhase.Began)
@@ -95,7 +97,7 @@ public class GameSceneController : MonoBehaviour
         }
 
         if (Input.GetTouch(0).phase != TouchPhase.Moved) return;
-        
+
         _secondPoint = Input.GetTouch(0).position;
         _xAngle = _xAngleTemp + (_secondPoint.x - _firstPoint.x) * 180 / Screen.width;
         _yAngle = _yAngleTemp + (_secondPoint.y - _firstPoint.y) * 90 / Screen.height;
@@ -109,7 +111,7 @@ public class GameSceneController : MonoBehaviour
 
         _remainingGameTime -= (int) _elapsed;
         _elapsed = 0;
-        
+
         if (_remainingGameTime < 0)
         {
             SetTimers("");
@@ -124,6 +126,7 @@ public class GameSceneController : MonoBehaviour
                 SceneManager.LoadScene("JudgingScene");
             }
         }
+
         SetTimers(_remainingGameTime + "");
     }
 
@@ -136,11 +139,11 @@ public class GameSceneController : MonoBehaviour
     {
         _gameText.text = text;
     }
-    
+
     private void SetChair(Vector2 position)
     {
         if (transform.position.Equals(position)) return;
-        
+
         var chair = _chairPositions[(int) position.x];
         var row = _rowPositions[(int) position.y];
         var seat = new Vector3(chair, row.x, row.y);
@@ -224,14 +227,11 @@ public class GameSceneController : MonoBehaviour
     {
         if (TeamWinnerAnnounced(status)) SetTeamWon(status.winningTeam.TeamName);
         if (MimePlayerChanged(status)) SetNextPerson(status.mimePlayer);
-        
+
         if (WaitingForTeam(status)) WaitForTeam(status.currentTeamName);
-        
-        if (_gameStatus != null && _gameStatus.currentTeamId.ToString().Equals(PlayerPrefs.GetString("TEAM_ID")))
-        {
-            var words = status.currentWords;
-            Portray(words[0], words[1], words[2]);            
-        }
+
+        var words = status.currentWords;
+        if (!PlayerPrefs.GetString("PieceWord").Equals(words[0])) Portray(words[0], words[1], words[2]);
 
         CheckPositionChanged(status);
     }
@@ -246,13 +246,13 @@ public class GameSceneController : MonoBehaviour
         // For future expansion this may become variable.
         _lastSeat = new Vector2(2, row);
     }
-    
+
     private static bool TeamWinnerAnnounced(GameStatus status)
     {
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         return status.isFinished && status.winningTeam != null;
     }
-    
+
     private bool MimePlayerChanged(GameStatus status)
     {
         return _gameStatus == null || !status.mimePlayer.Equals(_gameStatus.mimePlayer);
