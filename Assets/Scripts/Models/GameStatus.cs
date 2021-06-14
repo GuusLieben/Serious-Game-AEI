@@ -6,14 +6,14 @@ namespace Models
     [Serializable]
     public class GameStatus
     {
-        private Guid statusId;
-        private bool isFinished;
-        private Guid winningTeam;
-        private Guid currentTeamId;
-        private string currentTeamName;
-        private string mimePlayer;
-        private int roundCount;
-        private string[] currentWords;
-        private Dictionary<Guid, int> teamPositions;
+        public Guid statusId;
+        public bool isFinished;
+        public Team winningTeam;
+        public Guid currentTeamId;
+        public string currentTeamName;
+        public string mimePlayer;
+        public int roundCount;
+        public string[] currentWords;
+        public Dictionary<Guid, int> teamPositions;
     }
 }

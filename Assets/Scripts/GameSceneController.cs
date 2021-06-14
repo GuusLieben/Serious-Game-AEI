@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,6 @@ using Newtonsoft.Json;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.SceneManagement;
 
 public class GameSceneController : MonoBehaviour
 {
@@ -69,27 +69,13 @@ public class GameSceneController : MonoBehaviour
         _yAngle = 0;
         transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0);
         SetTimers("");
-        
-        // Development only
-        Portray("Soldaat van Oranje", "Garderobe", "Droevig");
+
+        StartPolling();
     }
 
     private void Update()
     {
-        // Development only, changes the active row
-        if (Input.GetKey(KeyCode.Alpha1)) SetChair(new Vector2(_lastSeat.x, 0));
-        if (Input.GetKey(KeyCode.Alpha2)) SetChair(new Vector2(_lastSeat.x, 1));
-        if (Input.GetKey(KeyCode.Alpha3)) SetChair(new Vector2(_lastSeat.x, 2));
-        if (Input.GetKey(KeyCode.Alpha4)) SetChair(new Vector2(_lastSeat.x, 3));
-        if (Input.GetKey(KeyCode.Alpha5)) SetChair(new Vector2(_lastSeat.x, 4));
-
-        // Development only, changes the active seat
-        if (Input.GetKey(KeyCode.A)) SetChair(new Vector2(0, _lastSeat.y));
-        if (Input.GetKey(KeyCode.B)) SetChair(new Vector2(1, _lastSeat.y));
-        if (Input.GetKey(KeyCode.C)) SetChair(new Vector2(2, _lastSeat.y));
-        if (Input.GetKey(KeyCode.D)) SetChair(new Vector2(3, _lastSeat.y));
-        if (Input.GetKey(KeyCode.E)) SetChair(new Vector2(4, _lastSeat.y));
-
+        SetChair(_lastSeat);
         UpdateTimer();
         
         if (Input.touchCount <= 0) return;
@@ -136,18 +122,16 @@ public class GameSceneController : MonoBehaviour
     {
         foreach (var timer in _timers) timer.text = text;
     }
-    
-    
+
     private void SetText(string text)
     {
         _gameText.text = text;
     }
     
-    // ========================
-    // public API
-    // ========================
-    public void SetChair(Vector2 position)
+    private void SetChair(Vector2 position)
     {
+        if (transform.position.Equals(position)) return;
+        
         var chair = _chairPositions[(int) position.x];
         var row = _rowPositions[(int) position.y];
         var seat = new Vector3(chair, row.x, row.y);
@@ -160,7 +144,7 @@ public class GameSceneController : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, seat, speed);
     }
 
-    public void Portray(string piece, string relation, string emotion)
+    private void Portray(string piece, string relation, string emotion)
     {
         SetText(string.Format(portrayText, piece, relation, emotion));
         PlayerPrefs.SetString("PieceWord", piece);
@@ -169,18 +153,18 @@ public class GameSceneController : MonoBehaviour
         StartTimer();
     }
 
-    public void NextPerson(string person)
+    private void NextPerson(string person)
     {
         SetText(string.Format(nextPerson, person));
     }
 
-    public void TeamWon(string team)
+    private void TeamWon(string team)
     {
         SetText(string.Format(teamWon, team));
         _gameActive = false;
     }
 
-    public void WaitForTeam(string team)
+    private void WaitForTeam(string team)
     {
         SetText(string.Format(waitingFor, team));
         StartTimer();
@@ -215,7 +199,11 @@ public class GameSceneController : MonoBehaviour
             var gameStatus = JsonConvert.DeserializeObject<GameStatus>(text);
             if (gameStatus != null)
             {
-                if (!gameStatus.Equals(_gameStatus)) UpdateState(gameStatus);
+                if (!gameStatus.Equals(_gameStatus))
+                {
+                    UpdateState(gameStatus);
+                    _gameStatus = gameStatus;
+                }
             }
             else Debug.LogError("GameStatus was null");
         }
@@ -223,6 +211,45 @@ public class GameSceneController : MonoBehaviour
 
     private void UpdateState(GameStatus status)
     {
+        if (TeamWinnerAnnounced(status)) TeamWon(status.winningTeam.TeamName);
+        if (MimePlayerChanged(status)) NextPerson(status.mimePlayer);
         
+        if (WaitingForTeam(status)) WaitForTeam(status.currentTeamName);
+        else
+        {
+            var words = status.currentWords;
+            Portray(words[0], words[1], words[2]);
+        }
+        
+        CheckPositionChanged(status);
+    }
+
+    private void CheckPositionChanged(GameStatus status)
+    {
+        var teamId = PlayerPrefs.GetString("TEAM_ID");
+        var guid = new Guid(teamId);
+        var row = status.teamPositions[guid];
+        if (Math.Abs(row - _lastSeat.y) < 0.01) return;
+        // Developer note, 2 is currently hardcoded to be the center chair.
+        // For future expansion this may become variable.
+        _lastSeat = new Vector2(2, row);
+    }
+    
+    private static bool TeamWinnerAnnounced(GameStatus status)
+    {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        return status.isFinished && status.winningTeam != null;
+    }
+    
+    private bool MimePlayerChanged(GameStatus status)
+    {
+        return !status.mimePlayer.Equals(_gameStatus.mimePlayer);
+    }
+
+    private static bool WaitingForTeam(GameStatus status)
+    {
+        var teamId = PlayerPrefs.GetString("TEAM_ID");
+        var guid = new Guid(teamId);
+        return !status.currentTeamId.Equals(guid);
     }
 }

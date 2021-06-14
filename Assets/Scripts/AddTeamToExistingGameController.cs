@@ -63,6 +63,9 @@ public class AddTeamToExistingGameController : MonoBehaviour
         }
         else
         {
+            var text = addTeamRequest.downloadHandler.text;
+            var registeredTeam = JsonConvert.DeserializeObject<Team>(text);
+            PlayerPrefs.SetString("TEAM_ID", registeredTeam.teamId.ToString());
             SceneManager.LoadScene("WaitingRoomScene");
         }
     }
