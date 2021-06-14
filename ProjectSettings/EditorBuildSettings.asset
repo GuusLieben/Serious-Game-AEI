@@ -20,7 +20,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/GameScene.unity
     guid: 895679ed0643b474b9e06d225be17861
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NewGameScene.unity
     guid: 48bebafcadabf1849bc8dbabbd86ba71
+  - enabled: 1
+    path: Assets/Scenes/JudgingScene.unity
+    guid: 6751a52510b806a40b020c7b92a72326
   m_configObjects: {}

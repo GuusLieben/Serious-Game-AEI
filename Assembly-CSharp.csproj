@@ -54,11 +54,12 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameSceneController.cs" />
      <Compile Include="Assets\Scripts\TeamController.cs" />
+     <Compile Include="Assets\Scripts\WaitingRoomSceneController.cs" />
+     <Compile Include="Assets\Scripts\JudgingSceneController.cs" />
      <Compile Include="Assets\Scripts\NewTeamController.cs" />
+     <Compile Include="Assets\Scripts\NavigationController.cs" />
      <Compile Include="Assets\Scripts\Models\Team.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\WaitingRoomSceneController.cs" />
-     <Compile Include="Assets\Scripts\NavigationController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
