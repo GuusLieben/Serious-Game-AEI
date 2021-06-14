@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Text;
 using Newtonsoft.Json;
@@ -29,10 +30,12 @@ public class NewTeamController : MonoBehaviour
 
         var team = new Team
         {
+            TeamId = Guid.NewGuid(),
             TeamName = teamName,
             PlayerNames = players
         };
-
+        PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
+        
         var teamString = JsonConvert.SerializeObject(team);
 
         using var addTeamRequest = UnityWebRequest.Post(string.Format(url, PlayerPrefs.GetString("GAME_CODE")), "");
