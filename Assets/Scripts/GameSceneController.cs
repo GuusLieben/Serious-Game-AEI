@@ -215,7 +215,8 @@ public class GameSceneController : MonoBehaviour
         yield return getTeamsRequest.SendWebRequest();
         if (getTeamsRequest.result != UnityWebRequest.Result.Success)
         {
-            Debug.Log("Couldn't fetch teams: " + getTeamsRequest.error);
+            Debug.Log("Couldn't fetch game status: " + getTeamsRequest.error);
+            Debug.Log("Info: " + getTeamsRequest.downloadHandler.error);
         }
         else
         {
