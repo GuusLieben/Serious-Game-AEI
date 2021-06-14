@@ -444,6 +444,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1567832776}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
@@ -558,6 +563,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1827761002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &254204740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1827761002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &531543756
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,6 +710,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531543756}
   m_CullTransparentMesh: 1
+--- !u!114 &584804543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1853132960206647214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &584804544 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1853132959266291308, guid: 0618bdaf54144274698139eb3c4670f1,
@@ -1057,6 +1086,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 212146650}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1567832776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 212146650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1601594281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1702,6 +1743,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 254204740}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
@@ -2005,6 +2051,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: JudgingSceneController, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 584804543}
     - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
