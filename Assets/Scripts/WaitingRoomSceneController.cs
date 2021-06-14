@@ -18,7 +18,7 @@ public class WaitingRoomSceneController : MonoBehaviour
     {
         _isReady = false;
         // Development only, will later be populated by other scene(s)
-        PlayerPrefs.SetString("GAME_CODE", "TFUrCM");
+        // PlayerPrefs.SetString("GAME_CODE", "TFUrCM");
         _gameCode = PlayerPrefs.GetString("GAME_CODE");
         Invoke(nameof(StartPolling), 5);
         title.text = _gameCode;
@@ -44,14 +44,12 @@ public class WaitingRoomSceneController : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Entered request response");
             var text = getTeamsRequest.downloadHandler.text;
             var count = JsonConvert.DeserializeAnonymousType(text, new {count = 0}).count;
             if (!_isReady && count == 2)
             {
                 _isReady = true;
                 // Go to new scene to start the game
-                Debug.LogWarning("Go to instructions");
                 SceneManager.LoadScene("InstructionsScene");
             }
         }
