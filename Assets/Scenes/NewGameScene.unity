@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414727, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1691,6 +1691,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2097757404}
     m_Modifications:
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 976408177}
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToStartUp
+      objectReference: {fileID: 0}
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NewTeamController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: -6947502599443460014, guid: 730ec7f1647e96a42b2a7de61048a24a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 460838929182637452, guid: 730ec7f1647e96a42b2a7de61048a24a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
