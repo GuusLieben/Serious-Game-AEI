@@ -49,6 +49,6 @@ public class NewTeamController : MonoBehaviour
 
     public void GoToStartUp()
     {
-        SceneManager.LoadScene("Scenes/StartMenuScene");
+        SceneManager.LoadScene("StartMenuScene");
     }
 }
