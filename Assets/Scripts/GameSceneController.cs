@@ -40,7 +40,7 @@ public class GameSceneController : MonoBehaviour
     private IEnumerable<TMP_Text> _timers;
     private int _remainingGameTime = -1;
 
-    private float _elapsed = 0;
+    private float _elapsed;
 
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
@@ -50,6 +50,7 @@ public class GameSceneController : MonoBehaviour
     [SerializeField] private string nextPerson = "Geef de telefoon aan:\n{0}";
     [SerializeField] private string teamWon = "{0} heeft gewonnen!";
     [SerializeField] private string waitingFor = "{0} is aan zet!";
+    [SerializeField] private int secondsPerRound = 30;
 
     private void Start()
     {
@@ -174,7 +175,7 @@ public class GameSceneController : MonoBehaviour
 
     private void StartTimer()
     {
-        _remainingGameTime = 30;
-        SetTimers("30");
+        _remainingGameTime = secondsPerRound;
+        SetTimers(secondsPerRound + "");
     }
 }
