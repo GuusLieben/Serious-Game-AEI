@@ -3,16 +3,23 @@ using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class NewTeamController : MonoBehaviour
 {
     
     [SerializeField] private TeamController teamController;
-    [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/teams/count?gameCode={0}";
+    [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/join?gameCode={0}";
+    [SerializeField] private string _newScene;
 
     public void StartGame()
     {
         StartCoroutine(PostTeam());
+    }
+
+    public void LoadNewScene()
+    {
+        SceneManager.LoadScene(_newScene);
     }
 
     private IEnumerator PostTeam()
