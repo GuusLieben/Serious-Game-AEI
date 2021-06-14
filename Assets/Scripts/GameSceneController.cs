@@ -132,6 +132,10 @@ public class GameSceneController : MonoBehaviour
         if (_remainingGameTime == 0)
         {
             SetText("Round ended");
+            if (!_gameStatus.currentTeamId.ToString().Equals(PlayerPrefs.GetString("TEAM_ID")))
+            {
+                SceneManager.LoadScene("JudgingScene");
+            }
         }
         SetTimers(_remainingGameTime + "");
     }
