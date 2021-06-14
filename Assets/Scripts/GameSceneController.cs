@@ -213,6 +213,12 @@ public class GameSceneController : MonoBehaviour
             var gameStatus = JsonConvert.DeserializeObject<GameStatus>(text);
             if (gameStatus != null)
             {
+                if (TeamWinnerAnnounced(gameStatus))
+                {
+                    SetTeamWon(gameStatus.winningTeam.TeamName);
+                    yield break;
+                }
+                
                 if (_gameStatus == null || _indicatingPlayer || !gameStatus.statusId.Equals(_gameStatus.statusId))
                 {
                     UpdateState(gameStatus);
@@ -227,9 +233,7 @@ public class GameSceneController : MonoBehaviour
     private void UpdateState(GameStatus status)
     {
         _indicatingPlayer = false;
-        
-        if (TeamWinnerAnnounced(status)) SetTeamWon(status.winningTeam.TeamName);
-        
+
         if (MimePlayerChanged(status)) SetNextPerson(status.mimePlayer);
         else
         {
