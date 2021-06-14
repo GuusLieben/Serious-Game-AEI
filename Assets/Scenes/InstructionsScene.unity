@@ -460,7 +460,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1101337007}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79f27a96e76f593499389a35bcdc0b1c, type: 3}
+  m_Script: {fileID: 11500000, guid: 3215ecc2b8521ae45b5fa41929d3ba77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1101337009
@@ -877,9 +877,44 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1101337008}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NavigationController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: GameScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 995046890621991113, guid: ec1f2733eec01a4439053db6a0fa5909,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 995046890621991114, guid: ec1f2733eec01a4439053db6a0fa5909,
         type: 3}
       propertyPath: m_Pivot.x
