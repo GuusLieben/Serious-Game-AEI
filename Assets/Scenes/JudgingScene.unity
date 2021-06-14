@@ -544,7 +544,6 @@ GameObject:
   - component: {fileID: 531543757}
   - component: {fileID: 531543760}
   - component: {fileID: 531543759}
-  - component: {fileID: 531543758}
   m_Layer: 5
   m_Name: TeamName
   m_TagString: Untagged
@@ -571,22 +570,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: -11}
   m_SizeDelta: {x: 664.81, y: 84.286}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &531543758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531543756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d60849e87a1e6f4b8ce9222a423ea5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textGroupCode: {fileID: 0}
-  teamName: {fileID: 531543759}
-  groupTitle: 'Groepscode: {0}'
-  url: https://avans-schalm-appserver.azurewebsites.net/api/game/
 --- !u!114 &531543759
 MonoBehaviour:
   m_ObjectHideFlags: 0
