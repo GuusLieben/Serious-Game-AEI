@@ -7,10 +7,8 @@ using UnityEngine.UI;
 
 public class JoinGameController : MonoBehaviour
 {
-    [SerializeField]
-    private InputField gameCodeInputField;
-    [SerializeField] 
-    private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/joinable?gameCode={0}";
+    [SerializeField] private InputField gameCodeInputField;
+    [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/joinable?gameCode={0}";
     
     public void OnSearchGameClicked()
     {
@@ -22,8 +20,6 @@ public class JoinGameController : MonoBehaviour
         {
             StartCoroutine(MakeRequest());
         }
-
-
     }
 
     private IEnumerator MakeRequest()

@@ -33,11 +33,12 @@ public class AddTeamToExistingGameController : MonoBehaviour
         {
             Debug.LogError("Names cannot be empty");
         }
-        List<string> players = new List<string>();
+        var players = new List<string>();
         
         players.Add(player1Input.text);
         players.Add(player2Input.text);
         
+        // Development only, remove once hooked
         var team = new Team
         {
             TeamName = "Team 2",
