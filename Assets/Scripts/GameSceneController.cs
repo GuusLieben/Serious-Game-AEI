@@ -52,15 +52,16 @@ public class GameSceneController : MonoBehaviour
     // Reference to last seat in 2D space (0,0 .. 4,4)
     private Vector2 _lastSeat;
 
+    private const string PortrayText = "Beeld uit:\n{0},\n{1},\n{2}";
+    private const string NextPerson = "Geef de telefoon aan:\n{0}";
+    private const string TeamWon = "{0} heeft gewonnen!";
+    private const string WaitingFor = "{0} is aan zet!";
+
     [SerializeField] private int chairShiftSpeed = 5;
-    private string portrayText = "Beeld uit:\n{0},\n{1},\n{2}";
-    [SerializeField] private string nextPerson = "Geef de telefoon aan:\n{0}";
-    [SerializeField] private string teamWon = "{0} heeft gewonnen!";
-    [SerializeField] private string waitingFor = "{0} is aan zet!";
     [SerializeField] private int secondsPerRound = 30;
     [SerializeField] private string url = "https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}";
 
-    void Start()
+    private void Start()
     {
         _lastSeat = new Vector2(4, 2);
 
@@ -92,13 +93,12 @@ public class GameSceneController : MonoBehaviour
             return;
         }
 
-        if (Input.GetTouch(0).phase == TouchPhase.Moved)
-        {
-            _secondPoint = Input.GetTouch(0).position;
-            _xAngle = _xAngleTemp + (_secondPoint.x - _firstPoint.x) * 180 / Screen.width;
-            _yAngle = _yAngleTemp + (_secondPoint.y - _firstPoint.y) * 90 / Screen.height;
-            this.transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0.0f);
-        }
+        if (Input.GetTouch(0).phase != TouchPhase.Moved) return;
+        
+        _secondPoint = Input.GetTouch(0).position;
+        _xAngle = _xAngleTemp + (_secondPoint.x - _firstPoint.x) * 180 / Screen.width;
+        _yAngle = _yAngleTemp + (_secondPoint.y - _firstPoint.y) * 90 / Screen.height;
+        transform.rotation = Quaternion.Euler(_yAngle, _xAngle, 0.0f);
     }
 
     private void UpdateTimer()
@@ -150,27 +150,27 @@ public class GameSceneController : MonoBehaviour
 
     private void Portray(string piece, string relation, string emotion)
     {
-        SetText(string.Format(portrayText, piece, relation, emotion));
+        SetText(string.Format(PortrayText, piece, relation, emotion));
         PlayerPrefs.SetString("PieceWord", piece);
         PlayerPrefs.SetString("RelationWord", relation);
         PlayerPrefs.SetString("EmotionWord", emotion);
         StartTimer();
     }
 
-    private void NextPerson(string person)
+    private void SetNextPerson(string person)
     {
-        SetText(string.Format(nextPerson, person));
+        SetText(string.Format(NextPerson, person));
     }
 
-    private void TeamWon(string team)
+    private void SetTeamWon(string team)
     {
-        SetText(string.Format(teamWon, team));
+        SetText(string.Format(TeamWon, team));
         _gameActive = false;
     }
 
     private void WaitForTeam(string team)
     {
-        SetText(string.Format(waitingFor, team));
+        SetText(string.Format(WaitingFor, team));
         StartTimer();
     }
 
@@ -216,8 +216,8 @@ public class GameSceneController : MonoBehaviour
 
     private void UpdateState(GameStatus status)
     {
-        if (TeamWinnerAnnounced(status)) TeamWon(status.winningTeam.TeamName);
-        if (MimePlayerChanged(status)) NextPerson(status.mimePlayer);
+        if (TeamWinnerAnnounced(status)) SetTeamWon(status.winningTeam.TeamName);
+        if (MimePlayerChanged(status)) SetNextPerson(status.mimePlayer);
         
         if (WaitingForTeam(status)) WaitForTeam(status.currentTeamName);
         else
