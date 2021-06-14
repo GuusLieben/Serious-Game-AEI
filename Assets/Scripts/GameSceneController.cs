@@ -66,7 +66,7 @@ public class GameSceneController : MonoBehaviour
 
     private void Start()
     {
-        _lastSeat = new Vector2(4, 2);
+        _lastSeat = new Vector2(2, 4);
 
         _timers = GameObject.FindGameObjectsWithTag("TimerText").Select(t => t.GetComponent<TMP_Text>());
         _gameText = GameObject.FindGameObjectWithTag("PrimarySceneText").GetComponent<TMP_Text>();
