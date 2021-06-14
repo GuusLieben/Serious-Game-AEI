@@ -203,11 +203,12 @@ public class GameSceneController : MonoBehaviour
             var gameStatus = JsonConvert.DeserializeObject<GameStatus>(text);
             if (gameStatus != null)
             {
-                if (!gameStatus.Equals(_gameStatus))
+                if (!gameStatus.Equals(_gameStatus) && _gameStatus != null)
                 {
                     UpdateState(gameStatus);
-                    _gameStatus = gameStatus;
                 }
+
+                _gameStatus = gameStatus;
             }
             else Debug.LogError("GameStatus was null");
         }
