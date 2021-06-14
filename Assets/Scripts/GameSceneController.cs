@@ -224,15 +224,12 @@ public class GameSceneController : MonoBehaviour
 
     private void UpdateState(GameStatus status)
     {
-        var onlySetWords = !PlayerPrefs.HasKey("PieceWord"); 
-        var words = status.currentWords;
-        if (!PlayerPrefs.GetString("PieceWord").Equals(words[0])) Portray(words[0], words[1], words[2]);
-        
-        if (onlySetWords) return;
-        
         if (TeamWinnerAnnounced(status)) SetTeamWon(status.winningTeam.TeamName);
         if (MimePlayerChanged(status)) SetNextPerson(status.mimePlayer);
 
+        var words = status.currentWords;
+        if (!PlayerPrefs.GetString("PieceWord").Equals(words[0])) Portray(words[0], words[1], words[2]);
+        
         if (WaitingForTeam(status)) WaitForTeam(status.currentTeamName);
 
         CheckPositionChanged(status);
