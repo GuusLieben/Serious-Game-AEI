@@ -225,12 +225,10 @@ public class GameSceneController : MonoBehaviour
         if (MimePlayerChanged(status)) SetNextPerson(status.mimePlayer);
         
         if (WaitingForTeam(status)) WaitForTeam(status.currentTeamName);
-        else
-        {
-            var words = status.currentWords;
-            Portray(words[0], words[1], words[2]);
-        }
         
+        var words = status.currentWords;
+        Portray(words[0], words[1], words[2]);
+
         CheckPositionChanged(status);
     }
 
