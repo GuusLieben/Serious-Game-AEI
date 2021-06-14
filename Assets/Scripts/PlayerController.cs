@@ -22,11 +22,24 @@ public class PlayerController : MonoBehaviour
 
     public void SaveUserName()
     {
-        if (PlayerPrefs.HasKey("PLAYER_NAMES"))
+        List<string> playerNames = new List<string>();
+
+        string oldJson = PlayerPrefs.GetString("PLAYER_NAMES", "");
+        if (!string.IsNullOrEmpty(oldJson))
         {
-            var existing = JsonConvert.DeserializeObject<List<string>>(PlayerPrefs.GetString("PLAYER_NAMES"));
-            if (existing != null) existing[playerId] = inputField.text;
+            playerNames = JsonConvert.DeserializeObject<List<string>>(oldJson);
         }
+
+        while(playerNames.Count < playerId + 1)
+        {
+            playerNames.Add("");
+        }
+
+        playerNames[playerId] = inputField.text;
+
+        string newJson = JsonConvert.SerializeObject(playerNames);
+        PlayerPrefs.SetString("PLAYER_NAMES", newJson);
+
         _playerName = inputField.text;
     }
 }

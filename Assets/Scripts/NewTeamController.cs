@@ -16,6 +16,7 @@ public class NewTeamController : MonoBehaviour
     public void StartGame()
     {
         StartCoroutine(PostTeam());
+        LoadNewScene();
     }
 
     public void LoadNewScene()
