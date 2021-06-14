@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -41,6 +42,7 @@ public class AddTeamToExistingGameController : MonoBehaviour
         // Development only, remove once hooked
         var team = new Team
         {
+            TeamId = Guid.NewGuid(),
             TeamName = "Team 2",
             PlayerNames = players
         };
@@ -63,9 +65,7 @@ public class AddTeamToExistingGameController : MonoBehaviour
         }
         else
         {
-            var text = addTeamRequest.downloadHandler.text;
-            var registeredTeam = JsonConvert.DeserializeObject<Team>(text);
-            PlayerPrefs.SetString("TEAM_ID", registeredTeam.teamId.ToString());
+            PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
             SceneManager.LoadScene("WaitingRoomScene");
         }
     }
