@@ -34,11 +34,9 @@ public class AddTeamToExistingGameController : MonoBehaviour
         {
             Debug.LogError("Names cannot be empty");
         }
-        var players = new List<string>();
-        
-        players.Add(player1Input.text);
-        players.Add(player2Input.text);
-        
+
+        var players = new List<string> {player1Input.text, player2Input.text};
+
         // Development only, remove once hooked
         var team = new Team
         {
@@ -49,7 +47,7 @@ public class AddTeamToExistingGameController : MonoBehaviour
 
         var teamString = JsonConvert.SerializeObject(team);
 
-        using var addTeamRequest = UnityWebRequest.Post(string.Format(url, PlayerPrefs.GetString("GAME_CODE")), "");
+        using var addTeamRequest = UnityWebRequest.Post(string.Format(url, _gameCode), "");
         
         addTeamRequest.SetRequestHeader("Content-Type", "application/json");
         

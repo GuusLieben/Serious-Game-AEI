@@ -42,6 +42,8 @@ public class NewTeamController : MonoBehaviour
         
         addTeamRequest.SetRequestHeader("Content-Type", "application/json");
         
+        Debug.Log(teamString);
+        
         var jsonToSend = new UTF8Encoding().GetBytes(teamString);
         addTeamRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);
         addTeamRequest.downloadHandler = new DownloadHandlerBuffer();
