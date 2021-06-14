@@ -45,12 +45,12 @@ public class JudgingSceneController : MonoBehaviour
     {
         var amount = _clicked.Count;
         var gameCode = PlayerPrefs.GetString("GAME_CODE");
-       StartCoroutine( MakeRequest(amount, gameCode));
+        StartCoroutine(MakeRequest(amount, gameCode));
     }
 
     private IEnumerator MakeRequest(int amount, string gamecode)
     {
-        using UnityWebRequest postScore = UnityWebRequest.Post(string.Format(url, gamecode), amount.ToString());
+        using var postScore = UnityWebRequest.Post(string.Format(url, gamecode), amount.ToString());
         postScore.SetRequestHeader("Content-Type", "application/json");
         
         var jsonToSend = new UTF8Encoding().GetBytes(amount.ToString());
