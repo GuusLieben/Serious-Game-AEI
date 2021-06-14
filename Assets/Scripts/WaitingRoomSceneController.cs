@@ -17,8 +17,6 @@ public class WaitingRoomSceneController : MonoBehaviour
     private void Start()
     {
         _isReady = false;
-        // Development only, will later be populated by other scene(s)
-        PlayerPrefs.SetString("GAME_CODE", "TFUrCM");
         _gameCode = PlayerPrefs.GetString("GAME_CODE");
         Invoke(nameof(StartPolling), 5);
         title.text = _gameCode;

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
@@ -80,7 +78,7 @@ public class GameSceneController : MonoBehaviour
         if (Input.GetKey(KeyCode.C)) SetChair(new Vector2(2, _lastSeat.y));
         if (Input.GetKey(KeyCode.D)) SetChair(new Vector2(3, _lastSeat.y));
         if (Input.GetKey(KeyCode.E)) SetChair(new Vector2(4, _lastSeat.y));
-        
+
         UpdateTimer();
         
         if (Input.touchCount <= 0) return;

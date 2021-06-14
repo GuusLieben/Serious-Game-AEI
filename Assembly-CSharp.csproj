@@ -53,6 +53,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameSceneController.cs" />
+     <Compile Include="Assets\Scripts\TeamController.cs" />
+     <Compile Include="Assets\Scripts\NewTeamController.cs" />
+     <Compile Include="Assets\Scripts\Models\Team.cs" />
+     <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\WaitingRoomSceneController.cs" />
      <Compile Include="Assets\Scripts\NavigationController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
