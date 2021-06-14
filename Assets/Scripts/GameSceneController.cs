@@ -201,7 +201,6 @@ public class GameSceneController : MonoBehaviour
         if (getTeamsRequest.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Couldn't fetch game status: " + getTeamsRequest.error);
-            Debug.Log("Info: " + getTeamsRequest.downloadHandler.error);
         }
         else
         {
