@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Text;
 using Newtonsoft.Json;
@@ -15,6 +16,7 @@ public class NewTeamController : MonoBehaviour
     public void StartGame()
     {
         StartCoroutine(PostTeam());
+        LoadNewScene();
     }
 
     public void LoadNewScene()
@@ -29,15 +31,19 @@ public class NewTeamController : MonoBehaviour
 
         var team = new Team
         {
+            TeamId = Guid.NewGuid(),
             TeamName = teamName,
             PlayerNames = players
         };
-
+        PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
+        
         var teamString = JsonConvert.SerializeObject(team);
 
         using var addTeamRequest = UnityWebRequest.Post(string.Format(url, PlayerPrefs.GetString("GAME_CODE")), "");
         
         addTeamRequest.SetRequestHeader("Content-Type", "application/json");
+        
+        Debug.Log(teamString);
         
         var jsonToSend = new UTF8Encoding().GetBytes(teamString);
         addTeamRequest.uploadHandler = new UploadHandlerRaw(jsonToSend);

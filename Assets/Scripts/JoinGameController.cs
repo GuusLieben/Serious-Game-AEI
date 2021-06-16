@@ -14,7 +14,7 @@ public class JoinGameController : MonoBehaviour
     {
         if (gameCodeInputField.text.Equals(""))
         {
-            Debug.LogWarning("Game code field is empty");
+            Debug.Log("Game code field is empty");
         }
         else
         {

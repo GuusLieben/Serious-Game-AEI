@@ -412,6 +412,46 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnswerBButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1688575747}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JudgingSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 1567832776}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
+      objectReference: {fileID: 0}
     - target: {fileID: 1853132959266291308, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
       propertyPath: m_text
@@ -523,6 +563,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1827761002}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &254204740 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1827761002}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &531543756
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,7 +586,6 @@ GameObject:
   - component: {fileID: 531543757}
   - component: {fileID: 531543760}
   - component: {fileID: 531543759}
-  - component: {fileID: 531543758}
   m_Layer: 5
   m_Name: TeamName
   m_TagString: Untagged
@@ -561,22 +612,6 @@ RectTransform:
   m_AnchoredPosition: {x: 5, y: -11}
   m_SizeDelta: {x: 664.81, y: 84.286}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &531543758
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 531543756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d60849e87a1e6f4b8ce9222a423ea5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textGroupCode: {fileID: 0}
-  teamName: {fileID: 531543759}
-  groupTitle: 'Groepscode: {0}'
-  url: https://avans-schalm-appserver.azurewebsites.net/api/game/
 --- !u!114 &531543759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +710,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 531543756}
   m_CullTransparentMesh: 1
+--- !u!114 &584804543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1853132960206647214}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &584804544 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1853132959266291308, guid: 0618bdaf54144274698139eb3c4670f1,
@@ -880,7 +927,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 942102825}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &942102827
 Camera:
   m_ObjectHideFlags: 0
@@ -1039,6 +1086,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 212146650}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1567832776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 212146650}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1601594281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1295,7 +1354,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1660430023}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1688575747}
+        m_TargetAssemblyTypeName: JudgingSceneController, Assembly-CSharp
+        m_MethodName: OnSubmit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1660430023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1519,6 +1590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1be59108fc2984b9994a82a532b812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  url: https://avans-schalm-appserver.azurewebsites.net/api/game/score?gameCode={0}
   buttonA: {fileID: 584804544}
   buttonB: {fileID: 73274739}
   buttonC: {fileID: 1399933910}
@@ -1638,6 +1710,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AnswerCButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1688575747}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JudgingSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 254204740}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
       objectReference: {fileID: 0}
     - target: {fileID: 1853132959266291308, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
@@ -1909,10 +2021,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnswerAButton
       objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1688575747}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnClicked
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: JudgingSceneController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 584804543}
+    - target: {fileID: 1853132958881748286, guid: 0618bdaf54144274698139eb3c4670f1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
+      objectReference: {fileID: 0}
     - target: {fileID: 1853132959266291310, guid: 0618bdaf54144274698139eb3c4670f1,
         type: 3}
       propertyPath: m_Name
       value: AnswerAText
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0618bdaf54144274698139eb3c4670f1, type: 3}

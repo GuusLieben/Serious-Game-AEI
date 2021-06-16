@@ -2191,7 +2191,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1761575032}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!124 &1761575034
 Behaviour:
   m_ObjectHideFlags: 0
@@ -2270,9 +2270,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chairShiftSpeed: 3
-  portrayText: Beeld uit
-  nextPerson: Give the phone to
-  teamWon: Team {0} won!
+  secondsPerRound: 30
+  url: https://avans-schalm-appserver.azurewebsites.net/api/game/status?gameCode={0}
 --- !u!54 &1761575038
 Rigidbody:
   m_ObjectHideFlags: 0

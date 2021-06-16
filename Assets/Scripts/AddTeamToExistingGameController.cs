@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -33,21 +34,20 @@ public class AddTeamToExistingGameController : MonoBehaviour
         {
             Debug.LogError("Names cannot be empty");
         }
-        var players = new List<string>();
-        
-        players.Add(player1Input.text);
-        players.Add(player2Input.text);
-        
+
+        var players = new List<string> {player1Input.text, player2Input.text};
+
         // Development only, remove once hooked
         var team = new Team
         {
+            TeamId = Guid.NewGuid(),
             TeamName = "Team 2",
             PlayerNames = players
         };
 
         var teamString = JsonConvert.SerializeObject(team);
 
-        using var addTeamRequest = UnityWebRequest.Post(string.Format(url, PlayerPrefs.GetString("GAME_CODE")), "");
+        using var addTeamRequest = UnityWebRequest.Post(string.Format(url, _gameCode), "");
         
         addTeamRequest.SetRequestHeader("Content-Type", "application/json");
         
@@ -63,6 +63,7 @@ public class AddTeamToExistingGameController : MonoBehaviour
         }
         else
         {
+            PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
             SceneManager.LoadScene("WaitingRoomScene");
         }
     }
