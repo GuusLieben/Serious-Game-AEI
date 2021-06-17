@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class NewTeamController : MonoBehaviour
         {
             TeamId = Guid.NewGuid(),
             TeamName = teamName,
-            PlayerNames = players
+            PlayerNames = players.Select(player => player.Name).ToList()
         };
         PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
         
