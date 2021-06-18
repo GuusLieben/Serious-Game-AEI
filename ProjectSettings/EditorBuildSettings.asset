@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/WaitingRoomScene.unity
     guid: 2455838b4a5e7e440b15401a117e13c9
   - enabled: 1
+    path: Assets/Scenes/EndOfGameScene.unity
+    guid: 0be4f5512564421408016d9497d969ff
+  - enabled: 1
     path: Assets/Scenes/NewGameScene.unity
     guid: 48bebafcadabf1849bc8dbabbd86ba71
   - enabled: 1
