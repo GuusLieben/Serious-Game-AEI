@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
         string oldJson = PlayerPrefs.GetString("PLAYER_NAMES", "");
         if (!string.IsNullOrEmpty(oldJson))
         {
+            Debug.Log(oldJson);
             playerNames = JsonConvert.DeserializeObject<List<Player>>(oldJson);
         }
 

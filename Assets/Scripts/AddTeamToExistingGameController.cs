@@ -42,7 +42,7 @@ public class AddTeamToExistingGameController : MonoBehaviour
         {
             TeamId = Guid.NewGuid(),
             TeamName = "Team 2",
-            PlayerNames = players
+            //PlayerNames = players
         };
 
         var teamString = JsonConvert.SerializeObject(team);
