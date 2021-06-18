@@ -6,6 +6,7 @@ using Models;
 public class Team
 {
     public Guid TeamId;
-    public string TeamName;
+    public string TeamName; 
     public List<Player> Players;
+    
 }
