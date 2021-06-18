@@ -34,7 +34,7 @@ public class NewTeamController : MonoBehaviour
         {
             TeamId = Guid.NewGuid(),
             TeamName = teamName,
-            PlayerNames = players.Select(player => player.Name).ToList()
+            // PlayerNames = players.Select(player => player.Name).ToList()
         };
         PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
         

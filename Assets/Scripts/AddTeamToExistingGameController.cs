@@ -16,6 +16,8 @@ public class AddTeamToExistingGameController : MonoBehaviour
     [SerializeField] private Text title;
     [SerializeField] private InputField player1Input;
     [SerializeField] private InputField player2Input;
+    [SerializeField] private InputField player1Age;
+    [SerializeField] private InputField player2Age;
 
     private void Start()
     {
@@ -42,7 +44,7 @@ public class AddTeamToExistingGameController : MonoBehaviour
         {
             TeamId = Guid.NewGuid(),
             TeamName = "Team 2",
-            PlayerNames = players
+            // Player = players
         };
 
         var teamString = JsonConvert.SerializeObject(team);
