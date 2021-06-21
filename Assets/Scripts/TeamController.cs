@@ -2,6 +2,7 @@ using System;
 using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using Models;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -9,7 +10,7 @@ using UnityEngine.Networking;
 public class TeamController : MonoBehaviour
 {
     
-    private List<string> _playerNames;
+    private List<Player> _playerNames;
     private string _groupCode;
     
     [SerializeField] private TMP_Text textGroupCode;
@@ -19,13 +20,13 @@ public class TeamController : MonoBehaviour
 
     private void Start()
     {
-        _playerNames = new List<string>();
+        _playerNames = new List<Player>();
         StartCoroutine(GenerateCode());
     }
 
-    public List<string> GetPlayers()
+    public List<Player> GetPlayers()
     {
-        _playerNames = JsonConvert.DeserializeObject<List<string>>(PlayerPrefs.GetString("PLAYER_NAMES"));
+        _playerNames = JsonConvert.DeserializeObject<List<Player>>(PlayerPrefs.GetString("PLAYER_NAMES"));
         return _playerNames;
     }
 

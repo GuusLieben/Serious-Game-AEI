@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class NewTeamController : MonoBehaviour
         {
             TeamId = Guid.NewGuid(),
             TeamName = teamName,
-            PlayerNames = players
+            Players = players
         };
         PlayerPrefs.SetString("TEAM_ID", team.TeamId.ToString());
         
@@ -51,10 +52,5 @@ public class NewTeamController : MonoBehaviour
 
         yield return addTeamRequest.SendWebRequest();
         Debug.Log(addTeamRequest.result != UnityWebRequest.Result.Success ? addTeamRequest.error : "Team Added!");
-    }
-
-    public void GoToStartUp()
-    {
-        SceneManager.LoadScene("StartMenuScene");
     }
 }
