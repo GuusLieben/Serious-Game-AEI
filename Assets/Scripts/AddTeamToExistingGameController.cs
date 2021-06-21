@@ -40,11 +40,10 @@ public class AddTeamToExistingGameController : MonoBehaviour
 
         var players = new List<Player>
         {
-            new Player() {Name = player1Input.text, Age = Int32.Parse(player1Age.text)},
-            new Player() {Name = player2Input.text, Age = Int32.Parse(player2Age.text)}
+            new Player() {Name = player1Input.text, Age = int.Parse(player1Age.text)},
+            new Player() {Name = player2Input.text, Age = int.Parse(player2Age.text)}
         };
 
-        // Development only, remove once hooked
         var team = new Team
         {
             TeamId = Guid.NewGuid(),
