@@ -38,12 +38,10 @@ public class AddTeamToExistingGameController : MonoBehaviour
             Debug.LogError("Names cannot be empty");
         }
 
-        var players = new List<Player>
-        {
-            new Player() {Name = player1Input.text, Age = int.Parse(player1Age.text)},
+        var players = new List<Player> {
+new Player() {Name = player1Input.text, Age = int.Parse(player1Age.text)},
             new Player() {Name = player2Input.text, Age = int.Parse(player2Age.text)}
-        };
-
+};
         var team = new Team
         {
             TeamId = Guid.NewGuid(),
