@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Models;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -16,6 +17,8 @@ public class AddTeamToExistingGameController : MonoBehaviour
     [SerializeField] private Text title;
     [SerializeField] private InputField player1Input;
     [SerializeField] private InputField player2Input;
+    [SerializeField] private InputField player1Age;
+    [SerializeField] private InputField player2Age;
 
     private void Start()
     {
@@ -35,14 +38,15 @@ public class AddTeamToExistingGameController : MonoBehaviour
             Debug.LogError("Names cannot be empty");
         }
 
-        var players = new List<string> {player1Input.text, player2Input.text};
-
-        // Development only, remove once hooked
+        var players = new List<Player> {
+new Player() {Name = player1Input.text, Age = int.Parse(player1Age.text)},
+            new Player() {Name = player2Input.text, Age = int.Parse(player2Age.text)}
+};
         var team = new Team
         {
             TeamId = Guid.NewGuid(),
             TeamName = "Team 2",
-            //PlayerNames = players
+            Players = players
         };
 
         var teamString = JsonConvert.SerializeObject(team);

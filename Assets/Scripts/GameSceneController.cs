@@ -176,6 +176,8 @@ public class GameSceneController : MonoBehaviour
     {
         SetText(string.Format(TeamWon, team));
         _gameActive = false;
+        Task.Delay(5000);
+        SceneManager.LoadScene("EndOfGameScene");
     }
 
     private void WaitForTeam(string team)
